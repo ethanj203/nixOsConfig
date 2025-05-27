@@ -10,9 +10,11 @@
       ./hardware-configuration.nix
     ];
 
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
 
   networking.hostName = "typhlosion"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -20,21 +22,30 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # networking.firewall.enable = false;
 
+
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
+
+  # Garbage collection for generations
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+
 
   # Enable sound.
   # hardware.pulseaudio.enable = true;
@@ -52,6 +63,7 @@
     packages = with pkgs; [
     ];
   };
+  
 
   # programs.firefox.enable = true;
 
@@ -62,7 +74,9 @@
     neovim
     wget
     git
+    neofetch
   ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -80,6 +94,8 @@
 
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
+
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 }
 
