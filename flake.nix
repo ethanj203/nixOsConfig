@@ -1,6 +1,6 @@
 {
 
-	description = "System config flake"
+	description = "System config flake";
 
 
 	inputs = {
@@ -8,11 +8,16 @@
 	};
 
 
-	outputs = { nixpkgs ... }: {
-		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-			system = "x86_64-linux";
-			modules = [ ./configuration.nix ];
+	outputs = { self, nixpkgs, ... }: 
+		let
+			lib = nixpkgs.lib;
+		in
+		{
+		nixosConfigurations = {
+			typhlosion = lib.nixosSystem {
+				system = "x86_64-linux";
+				modules = [ ./configuration.nix ];
+			};
 		};
 	};
-
 }
