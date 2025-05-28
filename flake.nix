@@ -30,6 +30,7 @@
 				inherit pkgs;
 				modules = [ ./home.nix ];
 			};
-
+		};
+			
 	};
 }
