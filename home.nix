@@ -18,8 +18,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-  	pkgs.starship
-	pkgs.neovim
+	#Put stuff down here if it doesn't have any options, so then you can manually hook in the source for the config files
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -63,7 +62,28 @@
 
   programs.neovim = {
   	enable = true;
-  }
+  };
+
+  programs.alacritty = {
+  	enable = true;
+	settings ={
+		font = {
+			size = 12.0;
+			normal = {
+				family = "FiraCode Nerd Font";
+				style = "Regular";
+			};
+			bold = {
+				family = "FiraCode Nerd Font";
+				sytle = "Bold";
+			};
+			italic = {
+				family = "FiraCode Nerd Font";
+				sytle = "Oblique";
+			};
+		};
+	};
+  };
 
 
   # Let Home Manager install and manage itself.

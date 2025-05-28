@@ -35,6 +35,12 @@
   };
 
 
+  # Installing fonts so system can see them
+  fonts.packages = with pkgs; [
+  	nerd-fonts.fira-code
+  ];
+
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
