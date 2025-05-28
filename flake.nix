@@ -14,7 +14,7 @@
 		let
 			lib = nixpkgs.lib;
 			system = "x86_64-linux";
-			pkgs = nixpkgs.legayPackages.${system};
+			pkgs = nixpkgs.legacyPackages.${system};
 
 		in
 		{
